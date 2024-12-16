@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Mad Libs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px auto;
+            max-width: 600px;
+        }
+        .mad-lib {
+            font-size: 18px;
+            margin-top: 30px;
+            font-style: italic;
+            line-height: 1.8;
+        }
+        .mad-lib-part {
+            font-weight: bold;
+            color: #007BFF;
+            border: none;
+            background: none;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .mad-lib-part:hover {
+            color: #0056b3;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lists for random selection
+            const times = ["yesterday", "this morning", "last night", "a week ago"];
+            const places = ["grocery store", "library", "beach", "amusement park"];
+            const items = ["book", "banana", "pair of shoes", "souvenir"];
+            const events = ["birthday party", "wedding", "concert", "game night"];
+
+            // Function to update a mad lib part
+            function updateMadLibPart(part, list) {
+                const randomValue = list[Math.floor(Math.random() * list.length)];
+                part.textContent = randomValue;
+            }
+
+            // Attach event listeners for each clickable part
+            document.getElementById("time").addEventListener("click", function () {
+                updateMadLibPart(this, times);
+            });
+            document.getElementById("place").addEventListener("click", function () {
+                updateMadLibPart(this, places);
+            });
+            document.getElementById("item").addEventListener("click", function () {
+                updateMadLibPart(this, items);
+            });
+            document.getElementById("event").addEventListener("click", function () {
+                updateMadLibPart(this, events);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="section">
+        <h1>Interactive Mad Libs</h1>
+        <p>Click on any part of the sentence below to generate a new random value for it!</p>
+    </div>
+
+    <div class="section mad-lib">
+        <span id="hello">Hello!</span> 
+        <button id="time" class="mad-lib-part">[random time]</button> I went to the 
+        <button id="place" class="mad-lib-part">[random place]</button> to buy a 
+        <button id="item" class="mad-lib-part">[random item]</button> to bring to my friend's 
+        <button id="event" class="mad-lib-part">[random event]</button>.
+    </div>
+</body>
+</html>
